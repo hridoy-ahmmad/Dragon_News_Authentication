@@ -28,8 +28,6 @@ const HomeLayout = () => {
                 <aside className='col-span-3 sticky top-0 z-50 self-start bg-white '>
                     <RightAside></RightAside>
                 </aside>
-
-
             </main>
         </div>
     );
