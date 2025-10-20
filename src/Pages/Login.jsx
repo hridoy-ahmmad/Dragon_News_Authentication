@@ -5,8 +5,6 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 const Login = () => {
     const { logIn } = use(AuthContext)
 
-
-
     const handleLogin = (e) => {
         e.preventDefault()
         // console.log('abcderfg');

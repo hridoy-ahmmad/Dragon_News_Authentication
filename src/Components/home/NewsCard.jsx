@@ -1,10 +1,17 @@
-import React, {  } from 'react';
+import React, { use } from 'react';
 import { CiShare2 } from 'react-icons/ci';
 import { FaEye, FaStar, FaRegBookmark } from 'react-icons/fa';
+import { Link } from 'react-router';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import LoadingPage from '../../Pages/LoadingPage';
 
 const NewsCard = ({ newNews }) => {
-    const { title, author, image_url, details, rating, total_view } = newNews;
+    const { title, author, image_url, details, rating, total_view, id } = newNews;
+    const {loading} = use(AuthContext)
 
+    if(loading){
+        return <LoadingPage></LoadingPage>
+    }
 
     return (
         <div className="card  card-compact bg-white shadow-lg rounded-lg border border-gray-200 relative">
@@ -47,17 +54,23 @@ const NewsCard = ({ newNews }) => {
                 </figure>
 
                 {/* Details */}
-                <p
-                    className={`text-gray-700 text-sm mt-1 p-4 line-clamp-3 `}
-                >
-                    {details}
-                </p>
+                <div className=''>
+                    <p
+                        className={'text-gray-700 text-sm mt-1 px-4 line-clamp-3 leading-7 h-full'}
+                    >
+                        {details}
+                    </p>
+
+                </div>
 
                 {/* Read More / Read Less Button */}
                 {
-                    <button className=" text-left text-secondary font-semibold  inline  text-sm mt-1 p-4" >
-                          Read More
-                    </button>
+                    <div className=" text-left text-secondary font-semibold    text-sm  bg-transparent m-5 inline-block">
+                        <Link to={`/newsDetails/${id}`}  >
+                            Read More
+                        </Link>
+                    </div>
+
                 }
 
                 <hr className="my-3 mx-4 border-gray-200" />
